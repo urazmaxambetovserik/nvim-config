@@ -27,7 +27,6 @@ require("lazy").setup({
 	{ "windwp/nvim-autopairs" },
 	{ "neovim/nvim-lspconfig" },
 	{ "williamboman/mason.nvim" },
-	{ "williamboman/mason-lspconfig.nvim" },
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -46,6 +45,12 @@ require("lazy").setup({
 		"nvim-flutter/flutter-tools.nvim",
 		dependencies = { "stevearc/dressing.nvim", "nvim-lua/plenary.nvim" },
 		config = true,
+	},
+	{
+		"urazmaxambetovserik/flutter-hot.nvim",
+		config = function()
+			require("flutter_hot").setup()
+		end,
 	},
 	{ "ray-x/lsp_signature.nvim" },
 	{ "hrsh7th/vim-vsnip" },

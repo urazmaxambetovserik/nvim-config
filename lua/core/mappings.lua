@@ -5,12 +5,8 @@ vim.g.mapleader = " "
 local opts = { silent = true, noremap = true }
 
 -- Flutter reload|restart
-vim.keymap.set("n", "<leader>r", function()
-	vim.fn.system("flutter-reload --reload")
-end, opts)
-vim.keymap.set("n", "<leader>R", function()
-	vim.fn.system("flutter-reload --restart")
-end, opts)
+vim.keymap.set("n", "<leader>r", ":FlutterHot reload<CR>", opts)
+vim.keymap.set("n", "<leader>R", ":FlutterHot restart<CR>", opts)
 
 -- LspSignature
 vim.keymap.set("n", "<leader>k", function()
