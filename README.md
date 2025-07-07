@@ -19,3 +19,9 @@ This is my personal Neovim config written in Lua. I focus on minimalism and effi
 ## License
 
 MIT — feel free to use, modify, and share.
+
+## Demo:
+![image 1](demo/1.png)
+![image 2](demo/2.png)
+![image 3](demo/3.png)
+![image 4](demo/4.png)
