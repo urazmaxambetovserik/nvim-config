@@ -54,13 +54,12 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 -- Dart
--- if you use flutter-tools lspconfig.dartls.setup you don't need to.
 local function reload_dartls_if_inactive()
 	local dartls_client = find_client_by_name("dartls")
 
 	vim.defer_fn(function()
 		reload_if_inactive(dartls_client, function()
-			require("flutter-tools.lsp").attach() -- <--- this line.
+			require("flutter-tools.lsp").attach()
 		end)
 	end, 2000)
 end
@@ -124,27 +123,7 @@ lsp.cssls.setup({
 	capabilities = capabilities,
 })
 
--- Tailwind
 lsp.tailwindcss.setup({})
-
--- Protobuf
-local configs = require("lspconfig.configs")
-local util = require("lspconfig.util")
-
-configs.protobuf_language_server = {
-	default_config = {
-		cmd = { "/home/serik/go/bin/protobuf-language-server" },
-		filetypes = { "proto", "cpp" },
-		root_dir = util.root_pattern(".git"),
-		single_file_support = true,
-		settings = {},
-	},
-}
-
--- then we can continue as we do with official servers
-lsp.protobuf_language_server.setup({
-	-- your custom stuff
-})
 
 lsp.clangd.setup({})
 
