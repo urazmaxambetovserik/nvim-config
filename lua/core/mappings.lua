@@ -34,37 +34,6 @@ vim.keymap.set("n", "<leader>t", ":ToggleTerm direction=float<CR>", opts)
 -- Folder
 vim.keymap.set("n", "<leader>e", ":Neotree<CR>", opts)
 
--- Vsnip jump
--- Переход к следующему плейсхолдеру
-vim.api.nvim_set_keymap(
-	"i", -- режим вставки
-	"<C-Tab>", -- клавиша
-	'vsnip#jumpable(1) ? "<Plug>(vsnip-jump-next)" : "<C-Tab>"',
-	{ expr = true, noremap = false }
-)
-
-vim.api.nvim_set_keymap(
-	"s", -- режим выделения
-	"<C-Tab>",
-	'vsnip#jumpable(1) ? "<Plug>(vsnip-jump-next)" : "<C-Tab>"',
-	{ expr = true, noremap = false }
-)
-
--- Переход к предыдущему плейсхолдеру
-vim.api.nvim_set_keymap(
-	"i",
-	"<S-Tab>",
-	'vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<S-Tab>"',
-	{ expr = true, noremap = false }
-)
-
-vim.api.nvim_set_keymap(
-	"s",
-	"<S-Tab>",
-	'vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<S-Tab>"',
-	{ expr = true, noremap = false }
-)
-
 -----------------------------------
 local luasnip = require("luasnip")
 
@@ -91,11 +60,6 @@ vim.keymap.set("x", "<C-l>", ">gv", opts)
 
 -- Code actions
 vim.keymap.set({ "n", "v" }, "<leader>c", vim.lsp.buf.code_action, opts)
-
--- Exceptions
-vim.keymap.set("n", "<C-w>a", function()
-	vim.diagnostic.open_float({ scope = "buffer" })
-end, opts)
 
 -- Python venv selector
 vim.keymap.set("n", "<leader>v", ":VenvSelect<CR>", opts)
