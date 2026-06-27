@@ -5,9 +5,10 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	sources = {
 		-- Formatting
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettierd.with({
+		null_ls.builtins.formatting.prettier.with({
 			filetypes = {
+				"typescriptreact",
+				"javascriptreact",
 				"prisma",
 				"json",
 				"jsonc",
@@ -16,26 +17,12 @@ null_ls.setup({
 				"scss",
 				"javascript",
 				"yaml",
-				"typescriptreact",
-				"javascriptreact",
+				"html",
 			},
 		}),
-		null_ls.builtins.formatting.isort,
-		null_ls.builtins.formatting.dart_format.with({
-			generator_opts = {
-				command = "/opt/old-dart-sdk/bin/dart",
-				args = { "format" },
-				to_stdin = true,
-			},
-		}),
-		null_ls.builtins.formatting.clang_format,
-		require("none-ls.formatting.ruff_format"),
-		require("none-ls.formatting.ruff"),
-		require("none-ls.formatting.beautysh"),
+		null_ls.builtins.formatting.dart_format,
 
 		-- Diagnostics
-		require("none-ls.diagnostics.ruff"),
-		require("none-ls.diagnostics.cpplint"),
 		require("none-ls.diagnostics.eslint_d"),
 	},
 
@@ -69,7 +56,7 @@ null_ls.setup({
 
 					if filename:match("%.dart$") then
 						vim.lsp.buf.code_action({
-							context = { only = { "source.organizeImports" } },
+							context = { only = { "source.organizeImports" }, diagnostics = {} },
 							apply = true,
 						})
 					end

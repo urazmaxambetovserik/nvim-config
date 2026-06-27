@@ -69,16 +69,16 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	callback = reload_dartls_if_inactive,
 })
 
--- Pyright
-lsp.pyright.setup({
-	python = {
-		analysis = {
-			autoSearchPaths = true,
-			diagnosticMode = "openFilesOnly",
-			useLibraryCodeForTypes = true,
-		},
-	},
-})
+-- -- Pyright
+-- lsp.pyright.setup({
+-- 	python = {
+-- 		analysis = {
+-- 			autoSearchPaths = true,
+-- 			diagnosticMode = "openFilesOnly",
+-- 			useLibraryCodeForTypes = true,
+-- 		},
+-- 	},
+-- })
 
 -- Jsonls
 lsp.jsonls.setup({
@@ -94,8 +94,12 @@ lsp.jsonls.setup({
 -- Typescript
 lsp.vtsls.setup({})
 
--- Bash
-lsp.bashls.setup({})
+-- -- Bash
+-- lsp.bashls.setup({})
+--
+-- lsp.protols.setup({
+-- 	root_dir = lsp.util.root_pattern("root.proto"),
+-- })
 
 -- Yaml
 lsp.yamlls.setup({
@@ -113,20 +117,27 @@ lsp.yamlls.setup({
 -- Docker
 lsp.dockerls.setup({})
 
--- Emmet
-lsp.emmet_language_server.setup({})
+-- -- Css
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- lsp.cssls.setup({
+-- 	capabilities = capabilities,
+-- })
+--
+-- lsp.tailwindcss.setup({})
 
--- Css
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-lsp.cssls.setup({
-	capabilities = capabilities,
-})
+-- lsp.clangd.setup({})
 
-lsp.tailwindcss.setup({})
+-- lsp.svelte.setup({})
+--
+-- lsp.gradle_ls.setup({})
 
-lsp.clangd.setup({})
-
-lsp.svelte.setup({})
-
-lsp.gradle_ls.setup({})
+-- lsp.rust_analyzer.setup({
+-- 	settings = {
+-- 		["rust-analyzer"] = {
+-- 			diagnostics = {
+-- 				enable = false,
+-- 			},
+-- 		},
+-- 	},
+-- })
